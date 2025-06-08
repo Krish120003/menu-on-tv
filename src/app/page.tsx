@@ -177,7 +177,7 @@ export default async function Home({
 
         <TileAnimator
           className="col-span-3 row-span-5"
-          cronExpression="20 * * * * *"
+          cronExpression="*/20 * * * * *"
         >
           <AlooTikkiBurgerTileHalf />
           <PavBhajiTileHalf />
