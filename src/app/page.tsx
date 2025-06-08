@@ -126,7 +126,6 @@ function RoohAfzaTile() {
     </Tile>
   );
 }
-
 function SamosaChanaChaatTile() {
   return (
     <Tile className="w-full h-full bg-red-500 relative">
@@ -138,16 +137,26 @@ function SamosaChanaChaatTile() {
         </div>
       </div>
 
-      <Image
-        src="/tile-photos/samosa.png"
-        alt="Samosa Chana Chaat"
-        className="object-cover absolute top-0 left-0"
-        width={1984}
-        height={1126}
+      {/* Wrapper div handles positioning */}
+      <div
+        className="absolute top-0 left-0"
         style={{
           transform: "scale(1.25) translateY(-50px) translateX(200px)",
         }}
-      />
+      >
+        {/* Image only handles spinning animation */}
+        <Image
+          src="/tile-photos/samosa.png"
+          alt="Samosa Chana Chaat"
+          className="object-cover"
+          width={1984}
+          height={1126}
+          style={{
+            animation: "spin 120s linear infinite",
+            transformOrigin: "center",
+          }}
+        />
+      </div>
     </Tile>
   );
 }
