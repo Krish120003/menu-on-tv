@@ -172,7 +172,7 @@ export default async function Home({
           cronExpression="40 * * * * *"
         >
           <KesarMilkBadamTile />
-          <RoohAfzaTile />
+          {/* <RoohAfzaTile /> */}
         </TileAnimator>
 
         <TileAnimator
