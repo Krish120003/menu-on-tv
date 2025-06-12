@@ -9,7 +9,7 @@ import TileAnimator from "./_components/tile-animator";
 
 const DEBUG_MODE = false;
 
-function Tile({
+export function Tile({
   children,
   className,
   style,
@@ -37,9 +37,9 @@ function AlooTikkiBurgerTileHalf() {
       <div className="flex-1/2 p-10 font-bold text-white">
         <h1 className="text-[10rem] leading-32 mb-8">Aloo Tikki Burger</h1>
         <p className="pt-4   text-2xl opacity-75 text-[5rem] leading-20">
-          Only $6.99
+          Only $8.99
         </p>
-        <p className="text-2xl opacity-75 text-[2.7rem]">*Limited Time Offer</p>
+        {/* <p className="text-2xl opacity-75 text-[2.7rem]">*Limited Time Offer</p> */}
       </div>
       <div className="flex-1/2 ">
         <div
@@ -178,15 +178,16 @@ export default async function Home({
         </div>
         <TileAnimator
           className="row-start-3 col-span-3 row-span-3"
-          cronExpression="40 * * * * *"
+          cronExpression="*/7 * * * * *"
         >
+          {/* <MusicTile /> */}
           <KesarMilkBadamTile />
           {/* <RoohAfzaTile /> */}
         </TileAnimator>
 
         <TileAnimator
           className="col-span-3 row-span-5"
-          cronExpression="*/20 * * * * *"
+          cronExpression="*/10 * * * * *"
         >
           <AlooTikkiBurgerTileHalf />
           <PavBhajiTileHalf />
