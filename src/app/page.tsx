@@ -9,7 +9,7 @@ import TileAnimator from "./_components/tile-animator";
 
 const DEBUG_MODE = false;
 
-export function Tile({
+function Tile({
   children,
   className,
   style,
