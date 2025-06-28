@@ -2,31 +2,13 @@ import Sizer from "./_components/sizer";
 import Page1 from "./_components/page1";
 import Page2 from "./_components/page2";
 import Page3 from "./_components/page3";
-import { cn, tl } from "@/util/tw";
+import { tl } from "@/util/tw";
 import Image from "next/image";
 
 import TileAnimator from "./_components/tile-animator";
+import Tile from "./_components/tile";
 
 const DEBUG_MODE = false;
-
-function Tile({
-  children,
-  className,
-  style,
-}: {
-  children: React.ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}) {
-  return (
-    <div
-      className={cn("bg-white rounded-3xl overflow-hidden", className)}
-      style={style}
-    >
-      {children}
-    </div>
-  );
-}
 
 function AlooTikkiBurgerTileHalf() {
   const imageOffsetX = 0;
