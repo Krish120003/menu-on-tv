@@ -232,9 +232,9 @@ function ThaliTile() {
       </div>
       <div className="col-span-1 row-span-1 flex flex-col items-start justify-between p-8 pt-16">
         <h1 className="text-[5rem] font-bold leading-tight">Daily Thali</h1>
-        <p className="text-[3rem] opacity-75 font-semibold text-balance leading-16">
+        {/* <p className="text-[3rem] opacity-75 font-semibold text-balance leading-16">
           Something new every day.
-        </p>
+        </p> */}
       </div>
     </Tile>
   );
@@ -260,15 +260,11 @@ export default async function Home({
           <ManchurianTile />
         </TileAnimator>
         <TileAnimator
-          className="col-span-2 row-span-4"
+          className="col-span-2 row-span-5"
           cronExpression="*/7 * * * * *"
         >
           <ThaliTile />
         </TileAnimator>
-        <Tile className="col-span-2 row-span-1 row-start-5 col-start-3 text-center bg-[#AC3CE9] font-bold flex flex-col items-center justify-center gap-0">
-          <span className="text-[2.5rem] leading-12">Ask for</span>
-          <span className="text-[4.5rem] leading-24">Today's Special</span>
-        </Tile>
         <TileAnimator
           className="col-span-2 row-span-5"
           cronExpression="1,11,21,31,41,51 * * * * *"
