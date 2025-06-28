@@ -203,12 +203,12 @@ function AamPanaTile() {
   return (
     <Tile className="w-full h-full bg-[#cec406] flex flex-col items-stretch justify-between  p-8">
       <h1 className="text-[7rem] font-bold leading-[96px] mb-8 text-right">
-        Aam Panna
+        Aam Pana
       </h1>
       <div className="w-full h-full relative top-0 left-0">
         <Image
           src="/tile-photos/aam-pana.png"
-          alt="Aam Panna"
+          alt="Aam Pana"
           width={1000}
           height={1000}
           className="absolute -bottom-0 right-0 scale-175"
