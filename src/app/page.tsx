@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import TileAnimator from "./_components/tile-animator";
 import Tile from "./_components/tile";
+import MusicTile from "./_components/music-tile";
 
 const DEBUG_MODE = false;
 
@@ -165,6 +166,7 @@ export default async function Home({
           {/* <MusicTile /> */}
           <KesarMilkBadamTile />
           {/* <RoohAfzaTile /> */}
+          {/* <MusicTile /> */}
         </TileAnimator>
 
         <TileAnimator
