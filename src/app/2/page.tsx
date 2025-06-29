@@ -9,7 +9,7 @@ import Image from "next/image";
 import TileAnimator from "../_components/tile-animator";
 import Tile from "../_components/tile";
 import MusicTile, { fetchMusicData } from "../_components/music-tile";
-import { useMusic } from "../_components/music-tile";
+
 import { useQuery } from "@tanstack/react-query";
 
 function SoyaChaapTile() {
