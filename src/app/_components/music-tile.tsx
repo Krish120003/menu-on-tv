@@ -164,7 +164,7 @@ function MusicTile() {
 
           <div className="flex-1 flex flex-col justify-center ">
             <div className="text-3xl text-white line-clamp-1 font-semibold">
-              {data.album}
+              {data.title} - {data.album}
             </div>
             <div className="text-lg  text-white/70 line-clamp-2 font-semibold    ">
               {data.artist}
