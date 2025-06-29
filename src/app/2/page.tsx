@@ -174,6 +174,10 @@ function ManchurianTile() {
           width={1000}
           height={1000}
           className=" absolute -bottom-50 scale-150"
+          style={{
+            animation: "spin 150s linear infinite",
+            transformOrigin: "center",
+          }}
         />
       </div>
     </Tile>
@@ -182,7 +186,7 @@ function ManchurianTile() {
 
 function BlueLagoonTile() {
   return (
-    <Tile className="w-full h-full bg-[#07ace3] flex flex-col items-stretch justify-between  p-8">
+    <Tile className="w-full h-full bg-[#0147b1] flex flex-col items-stretch justify-between  p-8">
       <h1 className="text-[5rem] font-bold leading-tight mb-8 text-right">
         Blue Lagoon
       </h1>
@@ -232,9 +236,9 @@ function ThaliTile() {
       </div>
       <div className="col-span-1 row-span-1 flex flex-col items-start justify-between p-8 pt-16">
         <h1 className="text-[5rem] font-bold leading-tight">Daily Thali</h1>
-        {/* <p className="text-[3rem] opacity-75 font-semibold text-balance leading-16">
-          Something new every day.
-        </p> */}
+        <p className="text-[3rem] opacity-75 font-semibold text-balance leading-16">
+          Freshly made with love every day.
+        </p>
       </div>
     </Tile>
   );
