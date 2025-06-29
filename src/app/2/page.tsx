@@ -205,7 +205,7 @@ function BlueLagoonTile() {
 
 function AamPanaTile() {
   return (
-    <Tile className="w-full h-full bg-[#cec406] flex flex-col items-stretch justify-between  p-8">
+    <Tile className="w-full h-full bg-[#e5ca00] flex flex-col items-stretch justify-between  p-8">
       <h1 className="text-[7rem] font-bold leading-[96px] mb-8 text-right">
         Aam Pana
       </h1>
