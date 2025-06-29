@@ -34,6 +34,22 @@ function timeToSeconds(timeStr: string): number {
   return 0;
 }
 
+// Convert seconds back to time string to match API format "M:SS"
+function secondsToTime(totalSeconds: number): string {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = Math.floor(totalSeconds % 60);
+
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function removeHoursFromDuration(duration: string): string {
+  const parts = duration.split(":");
+  if (parts.length === 3) {
+    return `${parts[1]}:${parts[2]}`;
+  }
+  return duration;
+}
+
 // Fetch music data from the API
 export async function fetchMusicData(): Promise<MusicData> {
   const response = await fetch("http://100.111.203.2:41145/now");
@@ -45,6 +61,7 @@ export async function fetchMusicData(): Promise<MusicData> {
 
 function MusicTile() {
   const [interpolatedProgress, setInterpolatedProgress] = useState(0);
+  const [interpolatedPosition, setInterpolatedPosition] = useState(0);
   const [lastFetchTime, setLastFetchTime] = useState(Date.now());
 
   const { data, error, isLoading } = useQuery({
@@ -54,7 +71,7 @@ function MusicTile() {
     refetchIntervalInBackground: true,
   });
 
-  // Interpolate progress between fetches
+  // Interpolate progress and position between fetches
   useEffect(() => {
     if (!data || data.state !== "PLAYING") return;
 
@@ -63,16 +80,20 @@ function MusicTile() {
     const progress = positionSeconds / durationSeconds;
 
     setInterpolatedProgress(progress);
+    setInterpolatedPosition(positionSeconds);
     setLastFetchTime(Date.now());
 
-    // Update progress every second while playing
+    // Update progress and position every second while playing
     const interval = setInterval(() => {
       const elapsed = (Date.now() - lastFetchTime) / 1000;
-      const newProgress = Math.min(
-        (positionSeconds + elapsed) / durationSeconds,
-        1
+      const newPositionSeconds = Math.min(
+        positionSeconds + elapsed,
+        durationSeconds
       );
+      const newProgress = newPositionSeconds / durationSeconds;
+
       setInterpolatedProgress(newProgress);
+      setInterpolatedPosition(newPositionSeconds);
     }, 1000);
 
     return () => clearInterval(interval);
@@ -142,7 +163,7 @@ function MusicTile() {
           </div>
 
           <div className="flex-1 flex flex-col justify-center ">
-            <div className="text-xl text-white line-clamp-1 font-semibold">
+            <div className="text-3xl text-white line-clamp-1 font-semibold">
               {data.album}
             </div>
             <div className="text-lg  text-white/70 line-clamp-2 font-semibold    ">
@@ -151,13 +172,13 @@ function MusicTile() {
           </div>
 
           <div className="space-y-2">
-            <div className="flex justify-between text-xs text-white/60">
-              <span>{data.position}</span>
-              <span>{data.duration}</span>
+            <div className="flex justify-between text-white/60">
+              <span>{secondsToTime(interpolatedPosition)}</span>
+              <span>{removeHoursFromDuration(data.duration)}</span>
             </div>
-            <div className="w-full bg-white/20 rounded-full h-1">
+            <div className="w-full bg-white/20 rounded-full h-3">
               <div
-                className="bg-white h-1 rounded-full transition-all duration-1000 ease-linear"
+                className="bg-white h-3 rounded-full transition-all duration-1000 ease-linear"
                 style={{
                   width: `${Math.max(
                     0,
