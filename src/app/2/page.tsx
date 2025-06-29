@@ -241,6 +241,63 @@ function PinaColadaTile() {
   );
 }
 
+function OreoShakeTile() {
+  return (
+    <Tile className="w-full h-full bg-[#2C1810] flex flex-col items-stretch justify-between  p-8">
+      <h1 className="text-[5rem] font-bold leading-tight mb-8 text-right">
+        Oreo Shake
+      </h1>
+      <div className="w-full h-full relative top-0 left-0">
+        <Image
+          src="/tile-photos/oreo-shake.png"
+          alt="Oreo Shake"
+          width={1000}
+          height={1000}
+          className="absolute -bottom-0 right-0 scale-200"
+        />
+      </div>
+    </Tile>
+  );
+}
+
+function KitKatShakeTile() {
+  return (
+    <Tile className="w-full h-full bg-[#D2001F] flex flex-col items-stretch justify-between  p-8">
+      <h1 className="text-[5rem] font-bold leading-tight mb-8 text-right">
+        Kit Kat Shake
+      </h1>
+      <div className="w-full h-full relative top-0 left-0">
+        <Image
+          src="/tile-photos/kitkat-shake.png"
+          alt="Kit Kat Shake"
+          width={1000}
+          height={1000}
+          className="absolute -bottom-0 right-0 scale-200"
+        />
+      </div>
+    </Tile>
+  );
+}
+
+function StrawberryShakeTile() {
+  return (
+    <Tile className="w-full h-full bg-[#E91E63] flex flex-col items-stretch justify-between  p-8">
+      <h1 className="text-[5rem] font-bold leading-tight mb-8 text-right">
+        Strawberry Shake
+      </h1>
+      <div className="w-full h-full relative top-0 left-0">
+        <Image
+          src="/tile-photos/strawberry-shake.png"
+          alt="Strawberry Shake"
+          width={1000}
+          height={1000}
+          className="absolute bottom-30 right-20 scale-200"
+        />
+      </div>
+    </Tile>
+  );
+}
+
 function ThaliTile() {
   return (
     <Tile className="w-full h-full bg-[#06593E] grid grid-cols-1 grid-rows-2 ">
@@ -295,6 +352,9 @@ export default async function Home({
           <AamPanaTile />
           <BlueLagoonTile />
           <PinaColadaTile />
+          <OreoShakeTile />
+          <KitKatShakeTile />
+          <StrawberryShakeTile />
         </TileAnimator>
       </div>
     </div>
