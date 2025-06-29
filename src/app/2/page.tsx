@@ -222,6 +222,25 @@ function AamPanaTile() {
   );
 }
 
+function PinaColadaTile() {
+  return (
+    <Tile className="w-full h-full bg-[#f5b001] flex flex-col items-stretch justify-between p-8 shadow-[inset_0_0_5px_0_rgba(0,0,0,0.2)]">
+      <h1 className="text-[5rem] font-bold leading-tight mb-8 text-right ">
+        Pina Colada
+      </h1>
+      <div className="w-full h-full relative top-0 left-0">
+        <Image
+          src="/tile-photos/pina-colada.png"
+          alt="Pina Colada"
+          width={1000}
+          height={1000}
+          className="absolute -bottom-0 right-0 scale-200"
+        />
+      </div>
+    </Tile>
+  );
+}
+
 function ThaliTile() {
   return (
     <Tile className="w-full h-full bg-[#06593E] grid grid-cols-1 grid-rows-2 ">
@@ -275,6 +294,7 @@ export default async function Home({
         >
           <AamPanaTile />
           <BlueLagoonTile />
+          <PinaColadaTile />
         </TileAnimator>
       </div>
     </div>
