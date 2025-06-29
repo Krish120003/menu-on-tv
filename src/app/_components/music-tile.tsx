@@ -95,7 +95,7 @@ function MusicTile() {
   }
 
   return (
-    <Tile className="w-full h-full bg-[#ff0000] relative overflow-hidden">
+    <Tile className="w-full h-full bg-[#000000] relative overflow-hidden">
       <div className="image absolute inset-0 bg-cover bg-center -translate-y-32 blur-2xl   scale-150">
         {/* we add the album art here but blurred and blown up in size and set z index to be behind everything */}
         <img
