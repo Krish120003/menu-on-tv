@@ -273,8 +273,8 @@ export default async function Home({
           className="col-span-2 row-span-5"
           cronExpression="1,11,21,31,41,51 * * * * *"
         >
-          <BlueLagoonTile />
           <AamPanaTile />
+          <BlueLagoonTile />
         </TileAnimator>
       </div>
     </div>
