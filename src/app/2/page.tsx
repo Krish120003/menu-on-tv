@@ -320,6 +320,33 @@ function ThaliTile() {
   );
 }
 
+function PavBhajiTileHalf() {
+  const imageOffsetX = 0;
+  const imageOffsetY = -100;
+
+  return (
+    <Tile className="w-full h-full bg-orange-600 flex flex-col-reverse items-stretch justify-center text-left">
+      <div className="flex-1/2 ">
+        <div {...tl("w-full h-full relative", imageOffsetX, imageOffsetY)}>
+          <Image
+            src="/tile-photos/pav-bhaji.png"
+            alt="Pav Bhaji"
+            width={800}
+            height={800}
+            className="absolute top-0 left-0 scale-150  "
+          />
+        </div>
+      </div>
+      <div className="flex-1/2 flex justify-start flex-col p-10 font-bold text-white">
+        <h1 className="text-[6rem] leading-16 mt-4">Pav Bhaji</h1>
+        <p className="pt-4 text-2xl opacity-75  text-[2.5rem] leading-12">
+          Buttered like royalty.
+        </p>
+      </div>
+    </Tile>
+  );
+}
+
 export default async function Home({
   searchParams,
 }: {
@@ -341,8 +368,9 @@ export default async function Home({
         </TileAnimator>
         <TileAnimator
           className="col-span-2 row-span-5"
-          cronExpression="*/7 * * * * *"
+          cronExpression="5,15,25,35,45,55 * * * * *"
         >
+          <PavBhajiTileHalf />
           <ThaliTile />
         </TileAnimator>
         <TileAnimator
@@ -354,7 +382,7 @@ export default async function Home({
           <PinaColadaTile />
           <OreoShakeTile />
           <KitKatShakeTile />
-          <StrawberryShakeTile />
+          {/* <StrawberryShakeTile /> */}
         </TileAnimator>
       </div>
     </div>

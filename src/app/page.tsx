@@ -38,33 +38,6 @@ function AlooTikkiBurgerTileHalf() {
   );
 }
 
-function PavBhajiTileHalf() {
-  const imageOffsetX = 100;
-  const imageOffsetY = -250;
-
-  return (
-    <Tile className="w-full h-full bg-orange-600 flex flex-col items-stretch justify-center text-left">
-      <div className="flex-1/2 ">
-        <div {...tl("w-full h-full relative", imageOffsetX, imageOffsetY)}>
-          <Image
-            src="/tile-photos/pav-bhaji.png"
-            alt="Pav Bhaji"
-            width={800}
-            height={800}
-            className="absolute top-0 left-0 scale-125"
-          />
-        </div>
-      </div>
-      <div className="flex-1/2 flex justify-end flex-col p-10 font-bold text-white">
-        <h1 className="text-[8rem] leading-24  mb-4">Pav Bhaji</h1>
-        <p className="pt-4 text-2xl opacity-75 text-[5rem] leading-20">
-          Only $8.99
-        </p>
-      </div>
-    </Tile>
-  );
-}
-
 function DahiBhallaTile() {
   const imageOffsetX = 60;
   const imageOffsetY = -250;
