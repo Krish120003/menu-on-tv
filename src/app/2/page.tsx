@@ -169,17 +169,17 @@ function StrawberryShakeTile() {
 
 function ThaliTile() {
   return (
-    <Tile className="w-full h-full bg-[#06593E] grid grid-cols-1 grid-rows-2 ">
-      <div className="col-span-1 row-span-1">
+    <Tile className="w-full h-full bg-[#06593E] grid grid-cols-1 grid-rows-5 overflow-hidden">
+      <div className="col-span-1 row-span-3 overflow-clip relative">
         <Image
-          src="/tile-photos/thali.png"
+          src="/tile-photos/daily-thali.png"
           alt="Daily Thali"
-          width={1000}
-          height={1000}
-          className="absolute"
+          width={2048}
+          height={1638}
+          className="absolute scale-150 -translate-y-1/5 rotate-45"
         />
       </div>
-      <div className="col-span-1 row-span-1 flex flex-col items-start justify-between p-8 pt-16">
+      <div className="col-span-1 row-span-2 flex flex-col items-start justify-between p-8 pt-16">
         <h1 className="text-[5rem] font-bold leading-tight">Daily Thali</h1>
         <p className="text-[3rem] opacity-75 font-semibold text-balance leading-16">
           Freshly made with love every day.
@@ -248,10 +248,10 @@ export default function Home() {
             "row-span-5": !showMusic,
             "row-span-4": showMusic,
           })}
-          every={10}
+          every={2}
           initialDelay={5}
         >
-          <PavBhajiTileHalf />
+          {/* <PavBhajiTileHalf /> */}
           <ThaliTile />
         </TileAnimator>
         {showMusic && (
