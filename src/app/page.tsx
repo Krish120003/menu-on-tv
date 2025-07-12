@@ -39,6 +39,37 @@ function AlooTikkiBurgerTileHalf() {
   );
 }
 
+function PaneerButterMasalaTile() {
+  // just like burger
+  const imageOffsetX = 20;
+  const imageOffsetY = -125;
+
+  return (
+    <Tile className="w-full h-full bg-amber-600 flex flex-col items-stretch justify-center text-right  ">
+      <div className="flex-1/2 p-10 font-bold text-white">
+        <h1 className="text-[7rem] leading-32 mb-8">Paneer Butter Masala</h1>
+      </div>
+      <div className="flex-1/2 ">
+        <div
+          {...tl(
+            "w-full h-full relative scale-125",
+            imageOffsetX,
+            imageOffsetY
+          )}
+        >
+          <Image
+            src="/tile-photos/paneer-butter-masala.png"
+            alt="Paneer Butter Masala"
+            width={2048}
+            height={1638}
+            className="absolute top-0 left-0 "
+          />
+        </div>
+      </div>
+    </Tile>
+  );
+}
+
 function DahiBhallaTile() {
   const imageOffsetX = 60;
   const imageOffsetY = -250;
@@ -201,7 +232,7 @@ export default async function Home({
           initialDelay={0}
         >
           <AlooTikkiBurgerTileHalf />
-          {/* <PavBhajiTileHalf /> */}
+          <PaneerButterMasalaTile />
           <DahiBhallaTile />
         </TileAnimator>
       </div>
