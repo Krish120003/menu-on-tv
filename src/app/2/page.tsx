@@ -248,8 +248,8 @@ export default function Home() {
             "row-span-5": !showMusic,
             "row-span-4": showMusic,
           })}
-          every={2}
-          initialDelay={5}
+          every={5}
+          initialDelay={2}
         >
           <PavBhajiTileHalf />
           <ThaliTile />
