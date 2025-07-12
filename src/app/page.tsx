@@ -185,7 +185,8 @@ export default async function Home({
         </div>
         <TileAnimator
           className="row-start-3 col-span-3 row-span-3"
-          cronExpression="*/11 * * * * *"
+          every={11}
+          initialDelay={0}
         >
           {/* <MusicTile /> */}
           <KesarMilkBadamTile />
@@ -196,7 +197,8 @@ export default async function Home({
 
         <TileAnimator
           className="col-span-3 row-span-5"
-          cronExpression="*/10 * * * * *"
+          every={10}
+          initialDelay={0}
         >
           <AlooTikkiBurgerTileHalf />
           {/* <PavBhajiTileHalf /> */}

@@ -237,7 +237,8 @@ export default function Home() {
       <div className="grid grid-cols-6 grid-rows-5 w-full h-full gap-6">
         <TileAnimator
           className="col-span-2 row-span-5"
-          cronExpression="3,13,23,33,43,53 * * * * *"
+          every={10}
+          initialDelay={3}
         >
           <SoyaChaapTile />
           <ManchurianTile />
@@ -247,7 +248,8 @@ export default function Home() {
             "row-span-5": !showMusic,
             "row-span-4": showMusic,
           })}
-          cronExpression="5,15,25,35,45,55 * * * * *"
+          every={10}
+          initialDelay={5}
         >
           <PavBhajiTileHalf />
           <ThaliTile />
@@ -255,14 +257,16 @@ export default function Home() {
         {showMusic && (
           <TileAnimator
             className="col-span-2 row-span-1 row-start-5 col-start-3"
-            cronExpression="5,15,25,35,45,55 * * * * *"
+            every={10}
+            initialDelay={5}
           >
             <MusicTile />
           </TileAnimator>
         )}
         <TileAnimator
           className="col-span-2 row-span-5"
-          cronExpression="1,11,21,31,41,51 * * * * *"
+          every={10}
+          initialDelay={1}
         >
           <AamPanaTile />
           <BlueLagoonTile />

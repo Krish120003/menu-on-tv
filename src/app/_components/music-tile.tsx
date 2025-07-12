@@ -71,7 +71,7 @@ function MusicTile() {
     refetchIntervalInBackground: true,
   });
 
-  // Interpolate progress and position between fetches
+  // Set initial progress and position when data changes
   useEffect(() => {
     if (!data || data.state !== "PLAYING") return;
 
@@ -82,8 +82,15 @@ function MusicTile() {
     setInterpolatedProgress(progress);
     setInterpolatedPosition(positionSeconds);
     setLastFetchTime(Date.now());
+  }, [data]);
 
-    // Update progress and position every second while playing
+  // Interpolate progress and position every second
+  useEffect(() => {
+    if (!data || data.state !== "PLAYING") return;
+
+    const durationSeconds = timeToSeconds(data.duration);
+    const positionSeconds = timeToSeconds(data.position);
+
     const interval = setInterval(() => {
       const elapsed = (Date.now() - lastFetchTime) / 1000;
       const newPositionSeconds = Math.min(
@@ -170,7 +177,7 @@ function MusicTile() {
             <div className="text-3xl text-white line-clamp-1 font-semibold">
               {data.title} - {data.album}
             </div>
-            <div className="text-lg  text-white/70 line-clamp-2 font-semibold    ">
+            <div className="text-lg  text-white/70 font-semibold  line-clamp-1  ">
               {data.artist}
             </div>
           </div>

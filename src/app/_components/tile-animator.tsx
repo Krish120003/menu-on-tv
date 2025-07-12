@@ -2,72 +2,53 @@
 
 import { cn } from "@/util/tw";
 import { useState, useEffect } from "react";
-import cron from "cron-parser";
 
 interface TileAnimatorProps {
   children: React.ReactNode[] | React.ReactNode;
   className?: string;
-  cronExpression?: string; // e.g., "*/20 * * * * *" for every 20 seconds
+  every?: number; // seconds between switches
+  initialDelay?: number; // seconds before first switch
 }
 
 function TileAnimator({
   children,
   className,
-  cronExpression = "*/20 * * * * *",
+  every = 20,
+  initialDelay = 0,
 }: TileAnimatorProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     if (!children) return;
-
-    // Don't animate if there's only one child or children is not an array
     if (!Array.isArray(children) || children.length <= 1) return;
 
-    const scheduleNextAnimation = () => {
-      try {
-        const interval = cron.parse(cronExpression);
-        const nextDate = interval.next().toDate();
-        const now = new Date();
-        const msUntilNext = nextDate.getTime() - now.getTime();
+    let intervalId: NodeJS.Timeout | null = null;
+    let initialTimeoutId: NodeJS.Timeout | null = null;
+    let animTimeoutId: NodeJS.Timeout | null = null;
 
-        return setTimeout(() => {
-          setIsVisible(false);
-
-          setTimeout(() => {
-            setCurrentIndex(
-              (prevIndex) =>
-                (prevIndex + 1) %
-                (Array.isArray(children) ? children.length : 1)
-            );
-            setIsVisible(true);
-          }, 300);
-
-          // Schedule the next animation
-          scheduleNextAnimation();
-        }, msUntilNext);
-      } catch (error) {
-        console.error("Invalid cron expression:", cronExpression, error);
-        // Fallback to 20-second interval if cron parsing fails
-        return setTimeout(() => {
-          setIsVisible(false);
-          setTimeout(() => {
-            setCurrentIndex(
-              (prevIndex) =>
-                (prevIndex + 1) %
-                (Array.isArray(children) ? children.length : 1)
-            );
-            setIsVisible(true);
-          }, 300);
-          scheduleNextAnimation();
-        }, 20000);
-      }
+    const animate = () => {
+      setIsVisible(false);
+      animTimeoutId = setTimeout(() => {
+        setCurrentIndex(
+          (prevIndex) =>
+            (prevIndex + 1) % (Array.isArray(children) ? children.length : 1)
+        );
+        setIsVisible(true);
+      }, 300);
     };
 
-    const timeoutId = scheduleNextAnimation();
+    initialTimeoutId = setTimeout(() => {
+      animate();
+      intervalId = setInterval(animate, every * 1000);
+    }, initialDelay * 1000);
 
-    return () => clearTimeout(timeoutId);
-  }, [children, cronExpression]);
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+      if (initialTimeoutId) clearTimeout(initialTimeoutId);
+      if (animTimeoutId) clearTimeout(animTimeoutId);
+    };
+  }, [children, every, initialDelay]);
 
   if (!children) {
     return null;
