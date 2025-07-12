@@ -45,7 +45,7 @@ function PaneerButterMasalaTile() {
   const imageOffsetY = -125;
 
   return (
-    <Tile className="w-full h-full bg-amber-600 flex flex-col items-stretch justify-center text-right  ">
+    <Tile className="w-full h-full bg-[#ffb300] flex flex-col items-stretch justify-center text-right  ">
       <div className="flex-1/2 p-10 font-bold text-white">
         <h1 className="text-[7rem] leading-32 mb-8">Paneer Butter Masala</h1>
       </div>
@@ -231,9 +231,9 @@ export default async function Home({
           every={10}
           initialDelay={0}
         >
-          <AlooTikkiBurgerTileHalf />
+          {/* <AlooTikkiBurgerTileHalf /> */}
           <PaneerButterMasalaTile />
-          <DahiBhallaTile />
+          {/* <DahiBhallaTile /> */}
         </TileAnimator>
       </div>
     </div>
