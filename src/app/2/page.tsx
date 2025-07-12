@@ -53,6 +53,25 @@ function ManchurianTile() {
   );
 }
 
+function ChanaBhaturaTile() {
+  return (
+    <Tile className="w-full h-full bg-[#000658] flex flex-col items-stretch justify-between  p-8">
+      <h1 className="text-[5rem] font-bold leading-tight mb-8 text-left">
+        Chana Bhatura
+      </h1>
+      <div className="w-full h-full relative top-0 left-0">
+        <Image
+          src="/tile-photos/chana-bhatura.png"
+          alt="Chana Bhatura"
+          width={1000}
+          height={1000}
+          className="absolute bottom-[4em] right-0 scale-[1.75]"
+        />
+      </div>
+    </Tile>
+  );
+}
+
 function BlueLagoonTile() {
   return (
     <Tile className="w-full h-full bg-[#0147b1] flex flex-col items-stretch justify-between  p-8">
@@ -242,6 +261,7 @@ export default function Home() {
         >
           <SoyaChaapTile />
           <ManchurianTile />
+          <ChanaBhaturaTile />
         </TileAnimator>
         <TileAnimator
           className={cn("col-span-2", {
