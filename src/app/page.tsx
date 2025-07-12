@@ -88,6 +88,30 @@ function KesarMilkBadamTile() {
   );
 }
 
+function ChaapKulchaTile() {
+  // same as kesar milk badam
+
+  return (
+    <Tile className="w-full h-full bg-amber-500 relative overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/tile-photos/chaap-kulcha.png')",
+          transform:
+            "rotate(5deg) translate(-300px, 000px) scaleX(-1.25) scaleY(1.25)",
+        }}
+      />
+      <div className="relative z-10 w-full h-full flex flex-col items-end justify-between p-8 font-bold text-white text-right">
+        <p className="text-[4rem] leading-tight opacity-75">Try Our</p>
+        <div>
+          <h1 className="text-[5rem] leading-tight">Chaap</h1>
+          <h1 className="text-[5rem] leading-tight">Kulcha</h1>
+        </div>
+      </div>
+    </Tile>
+  );
+}
+
 function RoohAfzaTile() {
   return (
     <Tile className="w-full h-full bg-pink-500 relative overflow-hidden">
@@ -161,10 +185,11 @@ export default async function Home({
         </div>
         <TileAnimator
           className="row-start-3 col-span-3 row-span-3"
-          cronExpression="*/7 * * * * *"
+          cronExpression="*/11 * * * * *"
         >
           {/* <MusicTile /> */}
           <KesarMilkBadamTile />
+          <ChaapKulchaTile />
           {/* <RoohAfzaTile /> */}
           {/* <MusicTile /> */}
         </TileAnimator>

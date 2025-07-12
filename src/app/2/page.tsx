@@ -228,7 +228,8 @@ export default function Home() {
     refetchIntervalInBackground: true,
   });
 
-  const showMusic = musicData?.state === "PLAYING";
+  const showMusic =
+    musicData?.state === "PLAYING" && !musicData.duration.includes("NOT_");
   // const showMusic = true;
 
   return (

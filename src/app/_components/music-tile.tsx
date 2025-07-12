@@ -115,6 +115,10 @@ function MusicTile() {
     return null;
   }
 
+  if (data.title.includes("IMPLEMENTED") || data.duration.includes("NOT_")) {
+    return null;
+  }
+
   return (
     <Tile className="w-full h-full bg-[#000000] relative overflow-hidden">
       <div className="image absolute inset-0 bg-cover bg-center -translate-y-32 blur-2xl   scale-150">
