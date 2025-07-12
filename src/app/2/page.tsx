@@ -251,7 +251,7 @@ export default function Home() {
           every={2}
           initialDelay={5}
         >
-          {/* <PavBhajiTileHalf /> */}
+          <PavBhajiTileHalf />
           <ThaliTile />
         </TileAnimator>
         {showMusic && (
