@@ -14,3 +14,25 @@
     rotate: 360deg;
   }
 }
+
+@keyframes phoneRing {
+  0% {
+    rotate: 0deg;
+  }
+
+  16% {
+    rotate: 10deg;
+  }
+
+  33% {
+    rotate: -10deg;
+  }
+
+  50% {
+    rotate: 10deg;
+  }
+
+  66% {
+    rotate: 0deg;
+  }
+}
