@@ -79,13 +79,6 @@ function ContactTile() {
           }}
         />
       </div>
-      <Image
-        src="/tile-photos/phone-card.png"
-        alt="Call s"
-        className="absolute top-0 left-0 w-full h-full mix-blend-difference"
-        width={597}
-        height={252}
-      />
     </Tile>
   );
 }
