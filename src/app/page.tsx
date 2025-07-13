@@ -231,9 +231,9 @@ export default async function Home({
           every={10}
           initialDelay={0}
         >
-          {/* <AlooTikkiBurgerTileHalf /> */}
+          <AlooTikkiBurgerTileHalf />
           <PaneerButterMasalaTile />
-          {/* <DahiBhallaTile /> */}
+          <DahiBhallaTile />
         </TileAnimator>
       </div>
     </div>
