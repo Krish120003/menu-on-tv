@@ -59,32 +59,137 @@ function HoursTile() {
 }
 
 function ContactTile({ expanded }: { expanded?: boolean }) {
+  const photosRef = useRef<HTMLDivElement>(null);
 
+  useLayoutEffect(() => {
+    if (photosRef.current) {
+      if (expanded) {
+        // Fade in photos
+        photosRef.current.style.display = "flex";
+        const photos = Array.from(photosRef.current.children);
+        photos.forEach((photo, index) => {
+          photo.animate([
+            { opacity: 0, transform: 'translateY(30px) scale(0.8)' },
+            { opacity: 1, transform: 'translateY(0px) scale(1)' }
+          ], {
+            duration: 600,
+            delay: index * 150,
+            easing: "ease-out",
+            fill: "forwards"
+          });
+        });
+      } else {
+        // Fade out photos
+        const photos = Array.from(photosRef.current.children);
+        const fadeOutPromises = photos.map((photo, index) => {
+          return photo.animate([
+            { opacity: 1, transform: 'translateY(0px) scale(1)' },
+            { opacity: 0, transform: 'translateY(-30px) scale(0.8)' }
+          ], {
+            duration: 200,
+            delay: index * 100,
+            easing: "ease-in",
+            fill: "forwards"
+          }).finished;
+        });
 
+        Promise.all(fadeOutPromises).then(() => {
+          if (photosRef.current) {
+            photosRef.current.style.display = "none";
+          }
+        });
+      }
+    }
+  }, [expanded]);
 
   return (
-    <Tile className="w-full h-full bg-[#FF3D3C] rounded-3xl relative">
-      <div className="font-bold text-[4rem] pl-6 pt-4 leading-18">
-        <div>Catering?</div>
-        <div>Takeout?</div>
-        <div>Questions?</div>
+    <Tile className="w-full h-full bg-[#FF3D3C] rounded-3xl relative overflow-hidden">
+      {/* Default contact content */}
+      <div className={cn("transition-opacity duration-500", {
+        "opacity-100": true
+      })}>
+        <div className="font-bold text-[4rem] pl-6 pt-4 leading-18">
+          {expanded ? (
+            <div>We do catering!</div>
+          ) : (
+            <>
+              <div>Catering?</div>
+              <div>Takeout?</div>
+              <div>Questions?</div>
+            </>
+          )}
+        </div>
+        <div className="text-[6.2rem] absolute bottom-0 text-right w-full font-semibold pr-8">
+          +1 (365) 378-0009
+        </div>
+        <div className="absolute right-0 top-0 pr-6 pt-0">
+          <div className="text-[6rem] font-bold">Call us.</div>
+          <Image
+            src="/icon/call-icon.svg"
+            alt="Call us"
+            className="absolute top-35 right-8 w-18 h-18"
+            width={597}
+            height={252}
+            style={{
+              animation: "phoneRing 1s infinite",
+            }}
+          />
+        </div>
       </div>
-      <div className="text-[6.2rem] absolute bottom-0 text-right w-full font-semibold pr-8"
+
+      {/* Photo gallery that appears when expanded - polaroid snapshots */}
+      <div
+        ref={photosRef}
+        className="absolute inset-0 pointer-events-none flex items-center justify-center gap-8"
+        style={{ display: 'none' }}
       >
-        +1 (365) 378-0009
-      </div>
-      <div className="absolute right-0 top-0 pr-6 pt-0">
-        <div className="text-[6rem] font-bold">Call us.</div>
-        <Image
-          src="/icon/call-icon.svg"
-          alt="Call us"
-          className="absolute top-35 right-8 w-18 h-18"
-          width={597}
-          height={252}
-          style={{
-            animation: "phoneRing 1s infinite",
-          }}
-        />
+        {/* Dishes polaroid */}
+        <div className="bg-white p-8 pb-12 rounded-lg shadow-2xl transform rotate-[-4deg]">
+          <div className="w-96 h-[32rem] rounded overflow-hidden">
+            <Image
+              src="/expanded-photos/dishes.jpg"
+              alt="Our delicious dishes"
+              className="w-full h-full object-cover"
+              width={500}
+              height={600}
+            />
+          </div>
+          <div className="text-gray-800 text-2xl mt-4 text-center font-medium">
+            Dishes Available
+          </div>
+        </div>
+
+        {/* Drinks polaroid */}
+        <div className="bg-white p-8 pb-12 rounded-lg shadow-2xl transform rotate-[2deg]">
+          <div className="w-96 h-[32rem] rounded overflow-hidden">
+            <Image
+              src="/expanded-photos/drinks.JPG"
+              alt="Refreshing drinks"
+              className="w-full h-full object-cover"
+              width={500}
+              height={600}
+            />
+          </div>
+          <div className="text-gray-800 text-2xl mt-4 text-center font-medium">
+            Live Mojitos
+          </div>
+        </div>
+
+        {/* Food polaroid */}
+        <div className="bg-white p-8 pb-12 rounded-lg shadow-2xl transform rotate-[-2deg]">
+          <div className="w-96 h-[32rem] rounded overflow-hidden">
+            <Image
+              src="/expanded-photos/food.jpg"
+              alt="Fresh food"
+              className="w-full h-full object-cover"
+              width={500}
+              height={600}
+            />
+          </div>
+          <div className="text-gray-800 text-2xl mt-4 text-center font-medium">
+            Amazing Food
+          </div>
+        </div>
       </div>
     </Tile>
   );
@@ -117,11 +222,20 @@ export default function Page3() {
   const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setExpanded((prev) => !prev);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    // if not expanded, expand after 30 seconds
+    // if expanded, collapse after 15 seconds
+    let timeout: NodeJS.Timeout;
+    if (!expanded) {
+      timeout = setTimeout(() => {
+        setExpanded(true);
+      }, 30000);
+    } else {
+      timeout = setTimeout(() => {
+        setExpanded(false);
+      }, 15000);
+    }
+    return () => clearTimeout(timeout);
+  }, [expanded]);
 
   const contactTileRef = useRef<HTMLDivElement>(null);
   const otherContentsRef = useRef<HTMLDivElement>(null);
