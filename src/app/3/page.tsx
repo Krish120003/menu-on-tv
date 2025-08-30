@@ -7,10 +7,23 @@ import { cn } from "@/util/tw";
 
 
 function BigOrangeTile() {
+
+  const menuSrc = "/tile-photos/mains-menu-temp.png"
+  const dealSrc = "/tile-photos/aloo-puri-deal.jpg"
+
+  // if time is before september 1, 2025 2:30 PM EST then show deal src else menu src
+  const [src, setSrc] = useState(menuSrc);
+
+  useEffect(() => {
+    const now = new Date();
+    const cutoff = new Date("2025-09-01T14:30:00-05:00");
+    setSrc(now < cutoff ? dealSrc : menuSrc);
+  }, []);
+
   return (
-    <Tile className="w-full h-full bg-[#ff5400] rounded-3xl px-8">
+    <Tile className="w-full h-full bg-[#fd8304] rounded-3xl px-8">
       <div className="relative w-full h-full">
-        <Image fill src="/tile-photos/mains-menu-temp.png" alt="menu items" />
+        <Image fill src={src} alt="menu items" />
       </div>
     </Tile>
   );
