@@ -186,6 +186,49 @@ function StrawberryShakeTile() {
   );
 }
 
+function FreshMixJuiceTile() {
+  return (
+    <Tile className="w-full h-full bg-[#FF6F61] flex flex-col items-stretch justify-between  p-8">
+      <div className="flex flex-col items-end gap-0 z-10 text-white">
+        <h1 className="text-[4rem] font-bold leading-tight text-right">
+          Fresh Mix Juice
+        </h1>
+        <p className="text-[2rem] opacity-75 font-semibold text-balance leading-12">
+          MMMMMMMMMM.
+        </p>
+      </div>
+      <div className="w-full h-full relative top-0 left-0">
+        <Image
+          src="/tile-photos/mix-fruit-juice.png"
+          alt="Fresh Mix Juice"
+          width={768}
+          height={1344}
+          className="absolute -bottom-0 right-0 scale-150 saturate-[1.2]"
+        />
+      </div>
+    </Tile>
+  );
+}
+
+function FreshOrangeJuiceTile() {
+  return (
+    <Tile className="w-full h-full bg-[#FFA500] flex flex-col items-stretch justify-between  p-8">
+      <h1 className="text-[4rem] font-bold leading-tight mb-8 text-left z-10">
+        Fresh Orange Juice
+      </h1>
+      <div className="w-full h-full relative top-0 left-0">
+        <Image
+          src="/tile-photos/orange-juice.png"
+          alt="Fresh Orange Juice"
+          width={1000}
+          height={1000}
+          className="absolute -bottom-0 right-0 scale-150"
+        />
+      </div>
+    </Tile>
+  );
+}
+
 function ThaliTile() {
   return (
     <Tile className="w-full h-full bg-[#06593E] grid grid-cols-1 grid-rows-5 overflow-hidden">
@@ -288,12 +331,14 @@ export default function Home() {
           every={10}
           initialDelay={1}
         >
-          <AamPanaTile />
+          {/* <AamPanaTile />
           <BlueLagoonTile />
           <PinaColadaTile />
           <OreoShakeTile />
-          <KitKatShakeTile />
+          <KitKatShakeTile /> */}
           {/* <StrawberryShakeTile /> */}
+          <FreshMixJuiceTile />
+          <FreshOrangeJuiceTile />
         </TileAnimator>
       </div>
     </div>
