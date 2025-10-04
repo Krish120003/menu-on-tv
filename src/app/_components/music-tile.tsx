@@ -160,15 +160,23 @@ function MusicTile() {
             </div>
             {isPlaying && (
               <div className="flex gap-1">
-                <div className="w-1 h-3 bg-green-400 animate-pulse" />
+                <div className="text-green-400 animate-bounce">♫</div>
                 <div
-                  className="w-1 h-2 bg-green-400 animate-pulse"
-                  style={{ animationDelay: "0.2s" }}
-                />
+                  className="text-green-400 animate-bounce"
+                  style={{
+                    animationDelay: "0.1s",
+                  }}
+                >
+                  ♫
+                </div>
                 <div
-                  className="w-1 h-4 bg-green-400 animate-pulse"
-                  style={{ animationDelay: "0.4s" }}
-                />
+                  className="text-green-400 animate-bounce"
+                  style={{
+                    animationDelay: "0.2s",
+                  }}
+                >
+                  ♫
+                </div>
               </div>
             )}
           </div>
