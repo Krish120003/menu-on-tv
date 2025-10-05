@@ -75,15 +75,15 @@ function AmritsariKulchaTile() {
 
 function PaneerButterMasalaTile() {
   // just like burger
-  const imageOffsetX = 20;
-  const imageOffsetY = -125;
+  const imageOffsetX = 60;
+  const imageOffsetY = -300;
 
   return (
-    <Tile className="w-full h-full bg-[#ffb300] flex flex-col items-stretch justify-center text-right  ">
-      <div className="flex-1/2 p-10 font-bold text-white">
+    <Tile className="w-full h-full bg-[#ffb300] flex flex-col items-stretch justify-center text-right  relative">
+      <div className="flex-1/2 p-10 font-bold text-white z-10">
         <h1 className="text-[7rem] leading-32 mb-8">Paneer Butter Masala</h1>
       </div>
-      <div className="flex-1/2 ">
+      {/* <div className="flex-1/2 ">
         <div
           {...tl(
             "w-full h-full relative scale-125",
@@ -92,14 +92,21 @@ function PaneerButterMasalaTile() {
           )}
         >
           <Image
-            src="/tile-photos/paneer-butter-masala.png"
+            src="/tile-photos/paneer-butter-masala-2.png"
             alt="Paneer Butter Masala"
-            width={2048}
-            height={1638}
-            className="absolute top-0 left-0 "
+            width={768}
+            height={1344}
+            className="absolute top-0 left-0 object-cover"
           />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
+      <Image
+        src="/tile-photos/paneer-butter-masala-2.png"
+        alt="Paneer Butter Masala"
+        width={768}
+        height={1344}
+        className="absolute inset-0 w-full object-cover scale-125 -top-20 saturate-[1.25]"
+      />
     </Tile>
   );
 }
@@ -265,10 +272,10 @@ export default async function Home({
           every={10}
           initialDelay={0}
         >
-          <AmritsariKulchaTile />
-          <AlooTikkiBurgerTileHalf />
+          {/* <AmritsariKulchaTile /> */}
+          {/* <AlooTikkiBurgerTileHalf /> */}
           <PaneerButterMasalaTile />
-          <DahiBhallaTile />
+          {/* <DahiBhallaTile /> */}
         </TileAnimator>
       </div>
     </div>
