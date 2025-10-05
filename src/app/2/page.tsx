@@ -194,7 +194,7 @@ function FreshMixJuiceTile() {
           Fresh Mix Juice
         </h1>
         <p className="text-[2rem] opacity-75 font-semibold text-balance leading-12">
-          MMMMMMMMMM.
+          Only $7.99
         </p>
       </div>
       <div className="w-full h-full relative top-0 left-0">
@@ -213,15 +213,20 @@ function FreshMixJuiceTile() {
 function FreshOrangeJuiceTile() {
   return (
     <Tile className="w-full h-full bg-[#FFA500] flex flex-col items-stretch justify-between  p-8">
-      <h1 className="text-[4rem] font-bold leading-tight mb-8 text-left z-10">
-        Fresh Orange Juice
-      </h1>
+      <div className="flex flex-col items-start gap-0 z-10 text-white">
+        <h1 className="text-[3.5rem] font-bold leading-tight text-left">
+          Fresh Orange Juice
+        </h1>
+        <p className="text-[2rem] opacity-75 font-semibold text-left leading-12">
+          Only $7.99
+        </p>
+      </div>
       <div className="w-full h-full relative top-0 left-0">
         <Image
           src="/tile-photos/orange-juice.png"
           alt="Fresh Orange Juice"
-          width={1000}
-          height={1000}
+          width={768}
+          height={1344}
           className="absolute -bottom-0 right-0 scale-150"
         />
       </div>
